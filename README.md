@@ -1,4 +1,8 @@
-# tab_example
+# flutter hooks tabbed
+
+## based of code from
+ https://stackoverflow.com/questions/55485466/how-to-detect-tabbar-change-in-flutter
+
 
 A new Flutter project.
 
@@ -14,4 +18,4 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-# flutter_hooks_tabbed
+

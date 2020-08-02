@@ -1,5 +1,8 @@
 # flutter hooks tabbed
 
+## test of hooks library
+https://github.com/rrousselGit/flutter_hooks
+
 ## based of code from
  https://stackoverflow.com/questions/55485466/how-to-detect-tabbar-change-in-flutter
 

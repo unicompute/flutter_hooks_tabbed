@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 // based of code from https://stackoverflow.com/questions/55485466/how-to-detect-tabbar-change-in-flutter
 
-void main() => runApp(TabBarDemo());
+void main() => runApp(MaterialApp(home: TabBarDemo()));
 
 class TabBarDemo extends HookWidget {
   final List<Widget> list = [
@@ -14,77 +14,35 @@ class TabBarDemo extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final _controller = useTabController(initialLength: list.length);
-    int _selectedIndex = 0;
-    return MaterialApp(
-      home: Scaffold(
+    // int _selectedIndex = 0;
+    final _index = useState(0);
+
+    return Scaffold(
         appBar: AppBar(
           bottom: TabBar(
             onTap: (index) {
               // Should not used it as it only called when tab options are clicked,
               // not when user swapped
+              _index.value = index;
             },
             controller: _controller,
             tabs: list,
           ),
-          title: Text('Tabs Demo'),
+          title: Text('Tabs Demo ${_index.value}'),
         ),
         body: TabBarView(
           controller: _controller,
           children: [
             Center(
-                child: Text(
-              _selectedIndex.toString(),
+              child: Text('selection index ${_controller.index}',
               style: TextStyle(fontSize: 40),
             )),
             Center(
-                child: Text(
-              (_selectedIndex + 1).toString(),
+              child: Text('selection index ${_controller.index}',
               style: TextStyle(fontSize: 40),
             )),
           ],
         ),
-      ),
-    );
+      );
   }
 }
-
-// ----------------
-
-/*
-TabController useTabController({@required int length, int initialIndex = 0}) {
-  return use(TabControllerHook(length, initialIndex));
-}
-
-class TabControllerHook extends Hook<TabController> {
-  final int length;
-  final int initialIndex;
-
-  const TabControllerHook(this.length, this.initialIndex);
-
-  @override
-  HookState<TabController, TabControllerHook> createState() {
-    return _TabControllerHookState();
-  }
-}
-
-class _TabControllerHookState
-    extends HookState<TabController, TabControllerHook> {
-  @override
-  build(BuildContext context) {
-    final tickerProvider =
-        useSingleTickerProvider(keys: [hook.length, hook.initialIndex]);
-    final controller = useMemoized(
-        () => TabController(
-            length: hook.length,
-            vsync: tickerProvider,
-            initialIndex: hook.initialIndex),
-        [tickerProvider]);
-
-    useEffect(() {
-      return controller.dispose;
-    }, [controller]);
-
-    return controller;
-  }
-}
-*/

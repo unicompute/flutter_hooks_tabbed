@@ -12,10 +12,8 @@ class TabBarDemo extends HookWidget {
     Tab(icon: Icon(Icons.ac_unit)),
   ];
 
-
   @override
   Widget build(BuildContext context) {
-
     final _controller = useTabController(initialLength: list.length);
     final _index = useState(0);
     final _key = GlobalKey();

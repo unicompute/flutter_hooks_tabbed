@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-// based of code from https://stackoverflow.com/questions/55485466/how-to-detect-tabbar-change-in-flutter
-
 void main() => runApp(MaterialApp(home: TabBarDemo()));
 
 class TabBarDemo extends HookWidget {
@@ -18,45 +16,40 @@ class TabBarDemo extends HookWidget {
     final _index = useState(0);
     final _key = GlobalKey();
 
-    _controller.addListener(()
-      {
-        _index.value = _controller.index;
-      });
+    _controller.addListener(() {
+      _index.value = _controller.index;
+    });
 
     return Scaffold(
-        appBar: AppBar(
-          bottom: TabBar(
-            onTap: (index) {
-              // Should not used it as it only called when tab options are clicked,
-              // not when user swapped
-              // _index.value = index;
-            },
-            controller: _controller,
-            tabs: list,
-          ),
-          title: Text('Tabs Demo ${_index.value}'),
-        ),
-        body: TabBarView(
-          key: _key,
+      appBar: AppBar(
+        bottom: TabBar(
+          onTap: (index) {},
           controller: _controller,
-          children: [
-            Center(
-              // key: GlobalKey(),
-              child: Text('1.\n_index:${_index.value}\n_controller.index: ${_controller.index}',
-              style: TextStyle(fontSize: 40),
-            )),
-            Center(
-              // key: GlobalKey(),
-              child: Text('2.\n_index: ${_index.value}\n_controller.index: ${_controller.index}',
-              style: TextStyle(fontSize: 40),
-            )),
-            Center(
-              // key: GlobalKey(),
-              child: Text('3.\n_index: ${_index.value}\n_controller.index: ${_controller.index}',
-              style: TextStyle(fontSize: 40),
-            )),
-          ],
+          tabs: list,
         ),
-      );
+        title: Text('Tabs Demo ${_index.value}'),
+      ),
+      body: TabBarView(
+        key: _key,
+        controller: _controller,
+        children: [
+          Center(
+              child: Text(
+            '1.\n_index:${_index.value}\n_controller.index: ${_controller.index}',
+            style: TextStyle(fontSize: 40),
+          )),
+          Center(
+              child: Text(
+            '2.\n_index: ${_index.value}\n_controller.index: ${_controller.index}',
+            style: TextStyle(fontSize: 40),
+          )),
+          Center(
+              child: Text(
+            '3.\n_index: ${_index.value}\n_controller.index: ${_controller.index}',
+            style: TextStyle(fontSize: 40),
+          )),
+        ],
+      ),
+    );
   }
 }

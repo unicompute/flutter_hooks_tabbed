@@ -5,9 +5,9 @@ void main() => runApp(MaterialApp(home: TabBarDemo()));
 
 class TabBarDemo extends HookWidget {
   final List<Widget> list = [
-    Tab(icon: Icon(Icons.card_travel)),
-    Tab(icon: Icon(Icons.add_shopping_cart)),
-    Tab(icon: Icon(Icons.ac_unit)),
+    const Tab(icon: Icon(Icons.card_travel)),
+    const Tab(icon: Icon(Icons.add_shopping_cart)),
+    const Tab(icon: Icon(Icons.ac_unit)),
   ];
 
   @override
@@ -36,17 +36,17 @@ class TabBarDemo extends HookWidget {
           Center(
               child: Text(
             '1.\n_index:${_index.value}\n_controller.index: ${_controller.index}',
-            style: TextStyle(fontSize: 40),
+            style: const TextStyle(fontSize: 40),
           )),
           Center(
               child: Text(
             '2.\n_index: ${_index.value}\n_controller.index: ${_controller.index}',
-            style: TextStyle(fontSize: 40),
+            style: const TextStyle(fontSize: 40),
           )),
           Center(
               child: Text(
             '3.\n_index: ${_index.value}\n_controller.index: ${_controller.index}',
-            style: TextStyle(fontSize: 40),
+            style: const TextStyle(fontSize: 40),
           )),
         ],
       ),

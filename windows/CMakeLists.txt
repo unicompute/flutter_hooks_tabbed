@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(tab_example LANGUAGES CXX)
+project(flutter_hooks_tabbed LANGUAGES CXX)
 
-set(BINARY_NAME "tab_example")
+set(BINARY_NAME "flutter_hooks_tabbed")
 
 cmake_policy(SET CMP0063 NEW)
 
